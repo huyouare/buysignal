@@ -1,9 +1,9 @@
 Buysignal::Application.routes.draw do
   devise_for :users
 
-  get "about" => "pages/about"
+  get "about" => "Pages#about"
 
-  get "test" => "pages/test"
+  get "dashboard" => "Pages#dashboard"
 
   root :to => "Pages#home"
 
