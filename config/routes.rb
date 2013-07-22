@@ -5,7 +5,8 @@ Buysignal::Application.routes.draw do
 
   get "about" => "Pages#about"
 
-  get "dashboard" => "Pages#dashboard"
+  # get "dashboard" => "Pages#dashboard"
+  get "dashboard" => "Queries#index"
 
   root :to => "Pages#home"
 

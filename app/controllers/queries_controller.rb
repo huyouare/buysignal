@@ -1,8 +1,12 @@
 class QueriesController < ApplicationController
+  before_filter :authenticate_user!
+  # before_filter :authenticate_user!, except: [:index]
+
   # GET /queries
   # GET /queries.json
   def index
-    @queries = Query.all
+    # @queries = Query.all
+    @queries = current_user.queries.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,7 +17,7 @@ class QueriesController < ApplicationController
   # GET /queries/1
   # GET /queries/1.json
   def show
-    @query = Query.find(params[:id])
+    @query = current_user.queries.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -24,7 +28,7 @@ class QueriesController < ApplicationController
   # GET /queries/new
   # GET /queries/new.json
   def new
-    @query = Query.new
+    @query = current_user.queries.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -34,13 +38,13 @@ class QueriesController < ApplicationController
 
   # GET /queries/1/edit
   def edit
-    @query = Query.find(params[:id])
+    @query = current_user.queries.find(params[:id])
   end
 
   # POST /queries
   # POST /queries.json
   def create
-    @query = Query.new(params[:query])
+    @query = current_user.queries.new(params[:query])
 
     respond_to do |format|
       if @query.save
@@ -56,7 +60,7 @@ class QueriesController < ApplicationController
   # PUT /queries/1
   # PUT /queries/1.json
   def update
-    @query = Query.find(params[:id])
+    @query = current_user.queries.find(params[:id])
 
     respond_to do |format|
       if @query.update_attributes(params[:query])
@@ -72,7 +76,7 @@ class QueriesController < ApplicationController
   # DELETE /queries/1
   # DELETE /queries/1.json
   def destroy
-    @query = Query.find(params[:id])
+    @query = current_user.queries.(params[:id])
     @query.destroy
 
     respond_to do |format|

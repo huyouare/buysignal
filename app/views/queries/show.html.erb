@@ -4,9 +4,12 @@
             <p>
             	<%= @query.keyword %>
               <%= @query.description %>
+              <%= @query.user.name %>
             </p>
-            <%= link_to 'Edit', edit_query_path(@query) %> |
-            <%= link_to 'Back', queries_path %>
+            <% if current_user == @query.user %>
+	            <%= link_to 'Edit', edit_query_path(@query) %>
+	          <% end %>
+	            <%= link_to 'Back', queries_path %>
         </div>
     </div>
 </div>
