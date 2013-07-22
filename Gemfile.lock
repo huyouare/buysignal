@@ -40,6 +40,9 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.6.3)
+    datasift (2.0.4)
+      rest-client (~> 1.6.3)
+      yajl-ruby (~> 1.1.0)
     devise (1.5.4)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.0.3)
@@ -86,6 +89,8 @@ GEM
     rake (10.1.0)
     rdoc (3.12.2)
       json (~> 1.4)
+    rest-client (1.6.7)
+      mime-types (>= 1.16)
     sass (3.2.9)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
@@ -111,6 +116,7 @@ GEM
       multi_json (~> 1.0, >= 1.0.2)
     warden (1.2.1)
       rack (>= 1.0)
+    yajl-ruby (1.1.0)
 
 PLATFORMS
   ruby
@@ -118,6 +124,7 @@ PLATFORMS
 DEPENDENCIES
   bootstrap-sass (~> 2.2.2.0)
   coffee-rails (~> 3.2.1)
+  datasift
   devise
   jquery-rails
   rails (= 3.2.13)

@@ -6,6 +6,7 @@
               <%= @query.description %>
               <%= @query.user.name %>
             </p>
+
             <% if current_user == @query.user %>
 	            <%= link_to 'Edit', edit_query_path(@query) %>
 	          <% end %>
