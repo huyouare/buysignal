@@ -85,4 +85,26 @@ class QueriesController < ApplicationController
     end
   end
 
+  def datasift_request
+    @query = current_user.queries.find(params[:id])
+    
+    keyword = @query.keyword
+
+    @query_text = "twitter.text contains \"#{keyword}\""
+
+    user = DataSift::User.new("blahblah", "3441448ba7cb3426fe0f996cb88ba8e2")
+    definition = user.createDefinition(@query_text)
+    consumer = definition.getConsumer(DataSift::StreamConsumer::TYPE_HTTP)
+    @interactionArr = Array.new
+    count = 5
+    consumer.consume(true) do |interaction|
+      if interaction
+        @interactionArr.push(interaction['interaction']['content'])
+        count -= 1
+        if count <= 0 
+          consumer.stop()
+        end
+      end
+    end
+  end
 end

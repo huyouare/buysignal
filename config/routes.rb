@@ -3,12 +3,14 @@ Buysignal::Application.routes.draw do
   
   devise_for :users
 
-  get "about" => "Pages#about"
+  get "about" => "pages#about"
 
   # get "dashboard" => "Pages#dashboard"
-  get "dashboard" => "Queries#index"
+  get "dashboard" => "queries#index"
 
-  root :to => "Pages#home"
+  get 'queries/:id/datasift_request', to: 'queries#datasift_request'
+
+  root :to => "pages#home"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

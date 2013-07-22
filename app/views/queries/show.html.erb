@@ -2,13 +2,18 @@
     <div class="span6 offset3">
         <div class="well">
             <p>
-            	<%= @query.keyword %>
-              <%= @query.description %>
-              <%= @query.user.name %>
+            	Keyword: <%= @query.keyword %>
+            	<br />
+            	<% unless @query.description.empty? %>
+	              Description: <%= @query.description %>
+  	            <br />
+	            <%  end %> 
+              Belongs To: <%= @query.user.name %>
             </p>
 
             <% if current_user == @query.user %>
-	            <%= link_to 'Edit', edit_query_path(@query) %>
+            	<%= link_to 'Send Query to DataSift', controller: "queries", action: "datasift_request" %> | 
+	            <%= link_to 'Edit', edit_query_path(@query) %> | 
 	          <% end %>
 	            <%= link_to 'Back', queries_path %>
         </div>

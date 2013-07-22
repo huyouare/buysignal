@@ -1,0 +1,20 @@
+<div class="row">
+    <div class="span6 offset3">
+        <div class="well">
+        	<h1>Request Page</h1>
+          <p>
+            Keyword: <%= @query.keyword %>
+          </p>
+          <p>
+            DataSift Query: <%= @query_text %>
+          </p>
+          <p>
+            <div>Tweets:</div>
+            <% @interactionArr.each_with_index do |tweet, index| %>
+              <div><%= index+1 %>. <%= tweet %></div>
+            <% end %>
+          </p>
+            <%= link_to 'Back', queries_path %>
+        </div>
+    </div>
+</div>
