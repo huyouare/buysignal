@@ -1,4 +1,6 @@
 Buysignal::Application.routes.draw do
+  resources :queries
+  
   devise_for :users
 
   get "about" => "Pages#about"

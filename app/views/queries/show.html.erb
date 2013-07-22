@@ -1,0 +1,12 @@
+<div class="row">
+    <div class="span6 offset3">
+        <div class="well">
+            <p>
+            	<%= @query.keyword %>
+              <%= @query.description %>
+            </p>
+            <%= link_to 'Edit', edit_query_path(@query) %> |
+            <%= link_to 'Back', queries_path %>
+        </div>
+    </div>
+</div>
