@@ -1,8 +1,11 @@
 <div class="center hero-unit">
-    <h1>Welcome! </h1>
+  <% if user_signed_in? %>
+    <h1>Welcome, <%= current_user.name %>!</h1>
+  <% else %>
+    <h1>Welcome!</h1>
+  <% end %>
     <p>to <%= link_to 'BuySignal App',  root_path %>
      </p>
-
     <p>
     	<% if user_signed_in? %>
     		<%= link_to "My Dashboard", dashboard_path, class: "btn btn-primary btn-large" %>

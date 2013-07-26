@@ -76,7 +76,7 @@ class QueriesController < ApplicationController
   # DELETE /queries/1
   # DELETE /queries/1.json
   def destroy
-    @query = current_user.queries.(params[:id])
+    @query = current_user.queries.find(params[:id])
     @query.destroy
 
     respond_to do |format|
@@ -87,7 +87,7 @@ class QueriesController < ApplicationController
 
   def datasift_request
     @query = current_user.queries.find(params[:id])
-    
+
     keyword = @query.keyword
 
     @query_text = "twitter.text contains \"#{keyword}\""
@@ -96,14 +96,28 @@ class QueriesController < ApplicationController
     definition = user.createDefinition(@query_text)
     consumer = definition.getConsumer(DataSift::StreamConsumer::TYPE_HTTP)
     @interactionArr = Array.new
-    count = 5
+    count = 1
     consumer.consume(true) do |interaction|
       if interaction
-        @interactionArr.push(interaction['interaction']['content'])
+        @interactionArr.push(interaction['twitter']['id'])
         count -= 1
         if count <= 0 
           consumer.stop()
-        end
+        end 
+      end
+    end
+
+    require 'net/http'
+
+    @tweetArr = Array.new
+
+    @interactionArr.each do |id|
+      urlString = "https://api.twitter.com/1/statuses/oembed.json?id=#{id}&align=center"
+      uri = URI(urlString)
+      res = Net::HTTP.get_response(uri)
+      if response.code == "200"
+        result = JSON.parse(res.body)
+        @tweetArr.push(result['html'])
       end
     end
   end

@@ -1,6 +1,53 @@
-<h1>Listing queries</h1>
+<h1>Listing <%= current_user.name %>'s queries</h1>
 
-<table class="table table-striped">
+<div class="tabbable"> <!-- Only required for left/right tabs -->
+  <ul class="nav nav-tabs">
+    <% @queries.each_with_index do |query, index| %>
+      <% if index==0 %>
+        <li class="active"><a href="#tab<%= index+1 %>" data-toggle="tab">Channel <%= index+1 %></a></li>
+      <% else %>
+        <li><a href="#tab<%= index+1 %>" data-toggle="tab">Channel <%= index+1 %></a></li>
+      <% end %>
+    <% end %>
+  </ul>
+  <div class="tab-content">
+    <% @queries.each_with_index do |query, index| %>
+      <% if index==0 %>
+        <div class="tab-pane active" id="tab<%= index+1 %>">
+          <table class="table table-striped">
+            <thead>  
+              <tr>
+                <th>Keyword</th>
+                <th>Description</th>
+                <th></th>
+                <th></th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody><%= render query %></tbody>
+          </table>
+        </div>
+      <% else %>
+        <div class="tab-pane" id="tab<%= index+1 %>">
+          <table class="table table-striped">
+            <thead>  
+              <tr>
+                <th>Keyword</th>
+                <th>Description</th>
+                <th></th>
+                <th></th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody><%= render query %></tbody>
+          </table>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+<!-- <table class="table table-striped">
   <thead>  
     <tr>
       <th>Keyword</th>
@@ -14,7 +61,7 @@
   <tbody>
     <%= render @queries %>
   </tbody>
-</table>
+</table> -->
 
 <br />
 

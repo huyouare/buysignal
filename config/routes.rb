@@ -8,7 +8,7 @@ Buysignal::Application.routes.draw do
   # get "dashboard" => "Pages#dashboard"
   get "dashboard" => "queries#index"
 
-  get 'queries/:id/datasift_request', to: 'queries#datasift_request'
+  match 'queries/:id/datasift_request' => 'queries#datasift_request', :as => 'datasift_request'
 
   root :to => "pages#home"
 

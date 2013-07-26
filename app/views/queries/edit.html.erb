@@ -1,6 +1,6 @@
 <h1>Editing query</h1>
 
 <%= render 'form' %>
-
+<td><%= link_to 'Destroy', @query, method: :delete, data: { confirm: 'Are you sure?' } %></td><br />
 <%= link_to 'Show', @query %> |
 <%= link_to 'Back', queries_path %>
