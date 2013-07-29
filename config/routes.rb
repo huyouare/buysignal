@@ -5,12 +5,14 @@ Buysignal::Application.routes.draw do
 
   get "about" => "pages#about"
 
+  get "index" => "pages#index"
+
   # get "dashboard" => "Pages#dashboard"
   get "dashboard" => "queries#index"
 
   match 'queries/:id/datasift_request' => 'queries#datasift_request', :as => 'datasift_request'
 
-  root :to => "pages#home"
+  root :to => "pages#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
