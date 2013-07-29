@@ -19,7 +19,9 @@
             <div class="carousel-caption">
               <h1>BuySignal is your company’s lead generation department.</h1>
               <p class="lead">Engage users that share “buy signals” on social networks. Request an invite today.</p>
-              <div class="form-horizontal"><input type="text" /><a class="btn btn-large btn-primary" href="#">Learn More</a></div>
+              <div class="form-inline">
+                <input type="text" class="input-large input-tall" placeholder="Email"/>    <%= link_to "Go!", new_user_registration_path, class: "btn btn-primary btn-large" %>
+              </div>
             </div>
           </div>
         </div>
@@ -27,9 +29,11 @@
           <img src="<%= image_path 'slide-03.jpg' %>" alt="">
           <div class="container">
             <div class="carousel-caption">
-              <h1>One more for good measure.</h1>
-              <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-              <a class="btn btn-large btn-primary" href="#">Learn More</a>
+              <h1>Interested in learning more?</h1>
+              <p class="lead">Sign up for our email list</p>
+              <div class="form-horizontal">
+                <input type="text" class="input input-tall" placeholder="Email"/>    <%= link_to "Get Early Access", new_user_registration_path, class: "btn btn-primary btn-large" %>
+              </div>
             </div>
           </div>
         </div>
