@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130722001624) do
+ActiveRecord::Schema.define(:version => 20130726185428) do
 
   create_table "queries", :force => true do |t|
     t.string   "keyword"
@@ -22,6 +22,16 @@ ActiveRecord::Schema.define(:version => 20130722001624) do
   end
 
   add_index "queries", ["user_id"], :name => "index_queries_on_user_id"
+
+  create_table "results", :force => true do |t|
+    t.string   "json"
+    t.integer  "results"
+    t.integer  "query_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "results", ["query_id"], :name => "index_results_on_query_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false
