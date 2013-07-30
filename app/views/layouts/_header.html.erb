@@ -1,4 +1,4 @@
-<div class="navbar navbar-inverse navbar-fixed-top">
+<div class="navbar transparent navbar-inverse navbar-fixed-top">
   <div class="navbar-inner">
     <div class="container">
       <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -11,25 +11,22 @@
 
       <div class="nav-collapse collapse">
         <ul class="nav">
-            <li>
-                <%= link_to 'Home',  home_path %>
-            </li>
-            <li>    
-                <%= link_to 'About',  about_path %>
-            </li>
             <% if user_signed_in? %>
-              <li><%= link_to "Dashboard", dashboard_path %></li>
+              <li><%= link_to "Dashboard", dashboard_path, class: "btn btn-primary" %></li>
             <% end %>
         </ul>
         <ul class="nav pull-right">
+          <li><%= link_to "Pricing", pricing_path %></li>
+          <li><%= link_to "Blog", blog_path %></li>
           <% if user_signed_in? %>
           	<li><%= link_to "Edit Profile", edit_user_registration_path %></li>
-          	<li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+          	<li><%= link_to "Logout", destroy_user_session_path, method: :delete, class: "btn btn-primary" %></li>
           <% else %>
-          	<li><%= link_to "Login / Sign Up", new_user_session_path %></li>
+            <li><%= link_to "Login", new_user_session_path %></li>
+          	<li><%= link_to "Sign Up", new_user_registration_path, class: "btn btn-primary" %></li>
           <% end %>
 				</ul>
-      </div>
+      </div> 
     </div>
   </div>
 </div>

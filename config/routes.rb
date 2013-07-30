@@ -3,11 +3,12 @@ Buysignal::Application.routes.draw do
   
   devise_for :users
 
+  # Pages
   get "about" => "pages#about"
-
   get "index" => "pages#index"
-
   get "home" => "pages#home"
+  get "pricing" => "pages#pricing"
+  get "blog" => "pages#blog"
 
   # get "dashboard" => "Pages#dashboard"
   get "dashboard" => "queries#index"

@@ -7,9 +7,12 @@
           <img src="<%= image_path 'slide-01.jpg' %>" alt="">
           <div class="container">
             <div class="carousel-caption">
-              <h1>Engage users that share “buy signals” on social networks.</h1>
-              <p class="lead">BuySignal is your company’s lead generation department. Request an invite today!</p>
-              <%= link_to "Sign Up Now!", new_user_registration_path, class: "btn btn-primary btn-large" %>
+              <h1>Social Network Lead Generation</h1>
+              <p class="lead">Verified by Humans. Powered by the web. Request an invite today!</p>
+              <form>
+                <input type="text" class="input-block-level" placeholder="Enter Your Email Address" />
+                <%= link_to "Request an Invitation", new_user_registration_path, class: "btn btn-primary btn-large input-block-level" %>
+              </form>
             </div>
           </div>
         </div>
@@ -19,9 +22,10 @@
             <div class="carousel-caption">
               <h1>BuySignal is your company’s lead generation department.</h1>
               <p class="lead">Engage users that share “buy signals” on social networks. Request an invite today.</p>
-              <div class="form-inline">
-                <input type="text" class="input-large input-tall" placeholder="Email"/>    <%= link_to "Go!", new_user_registration_path, class: "btn btn-primary btn-large" %>
-              </div>
+              <form class="">
+                <input type="text" class="input-block-level" placeholder="Enter Your Email Address" />
+                <%= link_to "Request an Invitation", new_user_registration_path, class: "btn btn-primary btn-large input-block-level" %>
+              </form>
             </div>
           </div>
         </div>
@@ -31,20 +35,46 @@
             <div class="carousel-caption">
               <h1>Interested in learning more?</h1>
               <p class="lead">Sign up for our email list</p>
-              <div class="form-horizontal">
-                <input type="text" class="input input-tall" placeholder="Email"/>    <%= link_to "Get Early Access", new_user_registration_path, class: "btn btn-primary btn-large" %>
-              </div>
+              <form>
+                <input type="text" class="input-block-level" placeholder="Enter Your Email Address" />
+                <%= link_to "Request an Invitation", new_user_registration_path, class: "btn btn-primary btn-large input-block-level" %>
+              </form>
             </div>
           </div>
         </div>
+
+
       </div>
       <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
       <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
     </div><!-- /.carousel -->
  
- 
- 
-    <!-- Marketing messaging and featurettes
+  <div class="bs-docs-social">
+    <div class="container">
+      <ul class="bs-docs-social-buttons">
+        <li>
+          <div class="fb-like" data-href="http://buysignalapp.com" data-send="true" data-layout="button_count" data-width="450" data-show-faces="false"></div>
+        </li>
+        <li class="follow-btn">
+          <a href="https://twitter.com/buysignalapp" class="twitter-follow-button" data-link-color="#0069D6" data-show-count="true">Follow @buysignalapp</a>
+        </li>
+        <li class="tweet-btn">
+          <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://buysignalapp.com" data-count="horizontal" data-via="buysignalapp" data-related="BuySignal">Tweet</a>
+        </li>
+        <li>
+          <g:plusone></g:plusone>
+        </li>
+      </ul>
+      <div class="row">
+        <button class="btn btn-facebook"><i class="icon-facebook"></i> | Connect with Facebook</button>
+        <button class="btn btn-twitter"><i class="icon-twitter"></i> | Connect with Twitter</button>
+        <button class="btn btn-google-plus"><i class="icon-google-plus"></i> | Connect with Google+</button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Marketing messaging and featurettes
     ================================================== -->
     <!-- Wrap the rest of the page in another container to center all the content. -->
  
@@ -78,7 +108,7 @@
       <hr class="featurette-divider">
  
       <div class="featurette">
-        <img class="featurette-image pull-left" data-src="holder.js/300x300/">
+        <img class="featurette-image pull-left" data-src="holder.js/300x300">
         <h2 class="featurette-heading">Verified by Humans. <div class="muted">Powered by the web. </div></h2>
         <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
       </div>
@@ -86,24 +116,29 @@
       <hr class="featurette-divider">
  
       <div class="featurette">
-        <img class="featurette-image pull-right" data-src="holder.js/300x300/">
+        <img class="featurette-image pull-right" data-src="holder.js/300x300">
         <h2 class="featurette-heading">Maybe User Stories. <span class="muted">Yes. </span></h2>
         <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
       </div>
     </div>
  
       <!-- /END THE FEATURETTES -->
-  <div class="bs-docs-social">
-    <div class="container">
-      <ul class="bs-docs-social-buttons">
-        <li class="follow-btn">
-          <a href="https://twitter.com/buysignalapp" class="twitter-follow-button" data-link-color="#0069D6" data-show-count="true">Follow @buysignalapp</a>
-        </li>
-        <li class="tweet-btn">
-          <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://buysignalapp.com" data-count="horizontal" data-via="buysignalapp" data-related="BuySignal">Tweet</a>
-        </li>
-      </ul>
-    </div>
-  </div>
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
   <div class="container">
+    <script type="text/javascript">
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>
