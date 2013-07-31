@@ -1,5 +1,7 @@
 $(window).ready(function () {
-    $('#myCarousel').carousel();
+    $('#myCarousel').carousel({interval: 7000});
+
+
 
     // $('#myCarousel').on('slid', function(){
     //  if($('#myCarousel .active').hasClass('slide-1')){
@@ -13,10 +15,14 @@ $(window).ready(function () {
     // });
 
     $('.left.carousel-control').on('click', function(){
-          if($('#myCarousel .active').hasClass('slide-1')||$('#myCarousel .active').hasClass('slide-2')){            
-          $('#myCarousel .slide-1 .carousel-caption form').toggleClass('slide-in');
-          $('#myCarousel .slide-2 .carousel-caption form').toggleClass('slide-in');
-        }
+      if($('#myCarousel .active').hasClass('slide-1')){            
+        $('#myCarousel .slide-1 .carousel-caption form').removeClass('slide-in');
+        $('#myCarousel .slide-2 .carousel-caption form').removeClass('slide-in');
+      }
+      if($('#myCarousel .active').hasClass('slide-2')){
+        $('#myCarousel .slide-1 .carousel-caption form').removeClass('slide-in');
+        $('#myCarousel .slide-2 .carousel-caption form').removeClass('slide-in');
+      }
     });
 
     $('#myCarousel').on('slide', function(){
