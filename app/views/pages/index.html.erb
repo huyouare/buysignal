@@ -3,73 +3,85 @@
     ================================================== -->
     <div id="myCarousel" class="carousel slide">
       <div class="carousel-inner">
-        <div class="item active">
+        <div class="item slide-1 active">
           <img src="<%= image_path 'slide-01.jpg' %>" alt="">
           <div class="container">
             <div class="carousel-caption">
               <h1>Social Network Lead Generation</h1>
               <p class="lead">Verified by Humans. Powered by the web. Request an invite today!</p>
-              <form>
+              <form class="span4 pull-right">
                 <input type="text" class="input-block-level" placeholder="Enter Your Email Address" />
                 <%= link_to "Request an Invitation", new_user_registration_path, class: "btn btn-primary btn-large input-block-level" %>
+                <div class="value"><img class="img-circle pull-left" data-src="holder.js/40x40">
+                  <div class="value-right"><h4>Exclusive</h4><p>Be the first and only point of sale.</p></div>
+                </div>
+                <div class="value"><img class="img-circle pull-left" data-src="holder.js/40x40">
+                  <div class="value-right"><h4>Real People. Real Time.</h4><p>Find the right person, at the right time. </p></div>
+                </div>
+                <div class="value"><img class="img-circle pull-left" data-src="holder.js/40x40">
+                  <div class="value-right"><h4>Cost-Effective</h4><p>Custom pricing for your business</p></div>
+                </div>
               </form>
             </div>
           </div>
         </div>
-        <div class="item">
+        <div class="item slide-2">
           <img src="<%= image_path 'slide-02.jpg' %>" alt="">
           <div class="container">
             <div class="carousel-caption">
               <h1>BuySignal is your company’s lead generation department.</h1>
               <p class="lead">Engage users that share “buy signals” on social networks. Request an invite today.</p>
-              <form class="">
+              <form class="span4 pull-right">
                 <input type="text" class="input-block-level" placeholder="Enter Your Email Address" />
                 <%= link_to "Request an Invitation", new_user_registration_path, class: "btn btn-primary btn-large input-block-level" %>
+                <div class="value"><img class="img-circle pull-left" data-src="holder.js/40x40">
+                  <div class="value-right"><h4>Exclusive</h4><p>Be the first and only point of sale.</p></div>
+                </div>
+                <div class="value"><img class="img-circle pull-left" data-src="holder.js/40x40">
+                  <div class="value-right"><h4>Real People. Real Time.</h4><p>Find the right person, at the right time. </p></div>
+                </div>
+                <div class="value"><img class="img-circle pull-left" data-src="holder.js/40x40">
+                  <div class="value-right"><h4>Cost-Effective</h4><p>Custom pricing for your business</p></div>
+                </div>
               </form>
             </div>
           </div>
         </div>
-        <div class="item">
+        <div class="item slide-3">
           <img src="<%= image_path 'slide-03.jpg' %>" alt="">
           <div class="container">
             <div class="carousel-caption">
               <h1>Interested in learning more?</h1>
               <p class="lead">Sign up for our email list</p>
               <form>
-                <input type="text" class="input-block-level" placeholder="Enter Your Email Address" />
-                <%= link_to "Request an Invitation", new_user_registration_path, class: "btn btn-primary btn-large input-block-level" %>
               </form>
             </div>
           </div>
         </div>
-
-
       </div>
       <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
       <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
     </div><!-- /.carousel -->
+
+
  
   <div class="bs-docs-social">
     <div class="container">
       <ul class="bs-docs-social-buttons">
         <li>
-          <div class="fb-like" data-href="http://buysignalapp.com" data-send="true" data-layout="button_count" data-width="450" data-show-faces="false"></div>
+          <div class="fb-like" data-href="http://buysignalapp.com/" data-send="false" data-layout="button_count" data-width="150" data-show-faces="false"></div>
         </li>
         <li class="follow-btn">
           <a href="https://twitter.com/buysignalapp" class="twitter-follow-button" data-link-color="#0069D6" data-show-count="true">Follow @buysignalapp</a>
         </li>
-        <li class="tweet-btn">
+<!--         <li class="tweet-btn">
           <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://buysignalapp.com" data-count="horizontal" data-via="buysignalapp" data-related="BuySignal">Tweet</a>
-        </li>
+        </li> -->
         <li>
           <g:plusone></g:plusone>
         </li>
       </ul>
-      <div class="row">
-        <button class="btn btn-facebook"><i class="icon-facebook"></i> | Connect with Facebook</button>
-        <button class="btn btn-twitter"><i class="icon-twitter"></i> | Connect with Twitter</button>
-        <button class="btn btn-google-plus"><i class="icon-google-plus"></i> | Connect with Google+</button>
-      </div>
+
     </div>
   </div>
 
@@ -78,49 +90,49 @@
     ================================================== -->
     <!-- Wrap the rest of the page in another container to center all the content. -->
  
-    <div class="container marketing">
+<!--     <div class="container marketing">
  
-      <!-- Three columns of text below the carousel -->
-      <div class="row">
-        <div class="span4">
-          <img class="img-circle" data-src="holder.js/140x140">
-          <h2>Exclusive, High-Quality Leads</h2>
-          <p>78% of people go with the 1st person that contacts them. Be the first and only point of sale!</p>
-          <p><a class="btn" href="#">View details &raquo;</a></p>
-        </div><!-- /.span4 -->
-        <div class="span4">
-          <img class="img-circle" data-src="holder.js/140x140">
-          <h2>Real People, Real-Time</h2>
-          <p>Find the right person, at the right time. Find the right buyers, at the right time.</p>
-          <p><a class="btn" href="#">View details &raquo;</a></p>
-        </div><!-- /.span4 -->
-        <div class="span4">
-          <img class="img-circle" data-src="holder.js/140x140">
-          <h2>Cost Effective Results</h2>
-          <p>Engaging experiences inspire conversions.</p>
-          <p><a class="btn" href="#">View details &raquo;</a></p>
-        </div><!-- /.span4 -->
-      </div><!-- /.row -->
+  Three columns of text below the carousel
+  <div class="row">
+    <div class="span4">
+      <img class="img-circle" data-src="holder.js/140x140">
+      <h2>Exclusive, High-Quality Leads</h2>
+      <p>78% of people go with the 1st person that contacts them. Be the first and only point of sale!</p>
+      <p><a class="btn" href="#">View details &raquo;</a></p>
+    </div>/.span4
+    <div class="span4">
+      <img class="img-circle" data-src="holder.js/140x140">
+      <h2>Real People, Real-Time</h2>
+      <p>Find the right person, at the right time. Find the right buyers, at the right time.</p>
+      <p><a class="btn" href="#">View details &raquo;</a></p>
+    </div>/.span4
+    <div class="span4">
+      <img class="img-circle" data-src="holder.js/140x140">
+      <h2>Cost Effective Results</h2>
+      <p>Engaging experiences inspire conversions.</p>
+      <p><a class="btn" href="#">View details &raquo;</a></p>
+    </div>/.span4
+  </div>/.row
  
  
-      <!-- START THE FEATURETTES -->
+  START THE FEATURETTES
  
-      <hr class="featurette-divider">
+  <hr class="featurette-divider">
  
-      <div class="featurette">
-        <img class="featurette-image pull-left" data-src="holder.js/300x300">
-        <h2 class="featurette-heading">Verified by Humans. <div class="muted">Powered by the web. </div></h2>
-        <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-      </div>
+  <div class="featurette">
+    <img class="featurette-image pull-left" data-src="holder.js/300x300">
+    <h2 class="featurette-heading">Verified by Humans. <div class="muted">Powered by the web. </div></h2>
+    <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+  </div>
  
-      <hr class="featurette-divider">
+  <hr class="featurette-divider">
  
-      <div class="featurette">
-        <img class="featurette-image pull-right" data-src="holder.js/300x300">
-        <h2 class="featurette-heading">Maybe User Stories. <span class="muted">Yes. </span></h2>
-        <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-      </div>
-    </div>
+  <div class="featurette">
+    <img class="featurette-image pull-right" data-src="holder.js/300x300">
+    <h2 class="featurette-heading">Maybe User Stories. <span class="muted">Yes. </span></h2>
+    <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+  </div>
+</div> -->
  
       <!-- /END THE FEATURETTES -->
 
@@ -130,7 +142,7 @@
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) return;
   js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&status=0";
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>

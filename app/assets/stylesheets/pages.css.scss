@@ -6,7 +6,7 @@
     /* Padding below the footer and lighter body text */
  
     body {
-      padding-bottom: 40px;
+      padding-bottom: 10px;
       color: #5a5a5a;
     }
  
@@ -68,7 +68,7 @@
     /* Carousel base class */
     .carousel {
       margin-bottom: 60px;
-      margin-top: 0px; /* Necessary to pull up carousel */
+      margin-top: -70px; /* Necessary to pull up carousel */
     }
  
     .carousel .container {
@@ -98,11 +98,15 @@
     }
  
     .carousel-caption {
+      text-align: center;
       background-color: transparent;
       position: static;
       padding: 0 20px;
-      margin-top: 120px;
+      margin-top: 100px;
+      margin-left: 0px;
+
     }
+
     .carousel-caption h1,
     .carousel-caption .lead {
       
@@ -110,21 +114,62 @@
       line-height: 1.25;
       color: #fff;
       text-shadow: 0 1px 1px rgba(0,0,0,.4);
+
     }
-    .carousel-caption form {
-      margin-top: 50px;
-      margin-left: 0px;
-      max-width: 300px;
-    }
-    .carousel-caption .btn,
-    .carousel-caption input {
-      margin-top: 0px;
+    form.pull-right {
+      margin-right: 50px;
     }
 
-    .carousel .input-tall {
+    .carousel-caption form {
+      text-align: left; 
+      opacity: 0;
+      margin-top: 40px;
+      margin-bottom: 10px;
+      margin-left: 50px;
+      // max-width: 80%;
+      -webkit-transition: all 1s ease-in-out;
+      -moz-transition: all 1s ease-in-out;
+      -o-transition: all 1s ease-in-out;
+      -ms-transition: all 1s ease-in-out;
+      transition: all 1s ease-in-out;
+      input {
+      margin-top: 0px;
+      }
+      .btn {
+        margin-top: 0px;
+        margin-bottom: 10px;
+      }
+      .input-tall {
       height: 40px;
       padding-bottom: 0px;
+      }
+      .value {
+        color: #fff;
+        margin-top: 0px;
+        padding: 5px 10px;
+        .value-right{
+          margin-left: 50px;
+        }
+        h4 {
+          color: #fff;
+        }
+        img {
+        min-width: 0;
+        position: relative;
+        }
+      }
     }
+    
+    .carousel-caption form.slide-in {
+      opacity: 1;
+      -webkit-transform: translate3d(-40px, 0, 0);
+      -moz-transform: translate3d(-40px, 0, 0);
+      -o-transform: translate3d(-40px, 0, 0);
+      -ms-transform: translate3d(-40px, 0, 0);
+      transform: translate3d(-40px, 0, 0);
+    }
+    
+    
     
     .carousel .carousel-inner .item {
       opacity: 0.5;
@@ -133,6 +178,7 @@
       -o-transition-property: opacity;
       transition-property: opacity;
     }
+
     .carousel .carousel-inner .active {
       opacity: 1;
     }

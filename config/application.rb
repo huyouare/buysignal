@@ -61,5 +61,8 @@ module Buysignal
 
     # Required for Devise on Heroku
     config.assets.initialize_on_precompile = false
+
+    #include fonts for FontAwesome
+    config.assets.paths << Rails.root.join("app", "assets", "fonts")
   end
 end

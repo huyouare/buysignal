@@ -1,8 +1,13 @@
 
 body{
-    padding-top: 0px;
+    padding-top: 70px;
 }
 
+@media (max-width: 980px) {
+  body {
+    padding-top: 0;
+  }
+}
 
 footer{
     margin-top: 100px;
