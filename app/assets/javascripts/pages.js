@@ -42,14 +42,14 @@ $(window).ready(function () {
         var right = $('#myCarousel').find('.item.active.right');
         if(left.length > 0) {
           if($('#myCarousel .active').hasClass('slide-3')){            
-            $('#myCarousel .slide-1 .carousel-caption form').toggleClass('slide-in');
-            $('#myCarousel .slide-2 .carousel-caption form').toggleClass('slide-in');
+            $('#myCarousel .slide-1 .carousel-caption form').addClass('slide-in');
+            $('#myCarousel .slide-2 .carousel-caption form').addClass('slide-in');
           }
         }
         else if(right.length > 0) {
           if($('#myCarousel .active').hasClass('slide-3')){            
-            $('#myCarousel .slide-1 .carousel-caption form').toggleClass('slide-in');
-            $('#myCarousel .slide-2 .carousel-caption form').toggleClass('slide-in');
+            $('#myCarousel .slide-1 .carousel-caption form').addClass('slide-in');
+            $('#myCarousel .slide-2 .carousel-caption form').addClass('slide-in');
           }
         }
       }, 500);
