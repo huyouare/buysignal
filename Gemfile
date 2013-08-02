@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.0.0'
+ruby '1.9.3'
 
 gem 'rails', '3.2.13'
 
@@ -24,6 +24,7 @@ gem 'devise'
 gem 'simple_form'
 
 gem 'datasift'
+gem 'tweetstream'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
