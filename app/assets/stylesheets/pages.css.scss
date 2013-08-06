@@ -10,8 +10,7 @@
       color: #5a5a5a;
     }
  
- 
- 
+
     /* CUSTOMIZE THE NAVBAR
     -------------------------------------------------- */
  
@@ -40,17 +39,17 @@
       font-size: 26px;
       font-weight: bold;
       text-shadow: -1px -1px 5px rgba(0,0,0,.5);
-      -webkit-transition: all 0.4s ease-in-out;
-      -moz-transition: all 0.4s ease-in-out;
-      -o-transition: all 0.4s ease-in-out;
-      -ms-transition: all 0.4s ease-in-out;
-      transition: all 0.4s ease-in-out;
+      -webkit-transition: all 0.2s ease-in-out;
+      -moz-transition: all 0.2s ease-in-out;
+      -o-transition: all 0.2s ease-in-out;
+      -ms-transition: all 0.2s ease-in-out;
+      transition: all 0.2s ease-in-out;
     }
     .navbar .brand:hover {
       text-shadow: -5px -5px 5px rgba(0,0,0,.5);
-      -webkit-transform: translate(1px, 1px);
-      -ms-transform: translate(1px, 1px);
-      transform: translate(1px, 1px);
+      // -webkit-transform: translate(1px, 1px);
+      // -ms-transform: translate(1px, 1px);
+      // transform: translate(1px, 1px);
     }
  
     /* Navbar links: increase padding for taller navbar */
