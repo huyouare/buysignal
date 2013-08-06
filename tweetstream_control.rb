@@ -1,3 +1,3 @@
-require 'daemons'
+# require 'daemons'
 
-Daemons.run('tweetstream.rb')
+# Daemons.run('tweetstream.rb')
