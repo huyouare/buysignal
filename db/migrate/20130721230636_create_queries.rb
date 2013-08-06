@@ -3,7 +3,6 @@ class CreateQueries < ActiveRecord::Migration
     create_table :queries do |t|
       t.string :keyword
       t.string :description
-
       t.timestamps
     end
   end
