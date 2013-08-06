@@ -1,7 +1,8 @@
 class CreateResults < ActiveRecord::Migration
   def change
     create_table :results do |t|
-      t.string :json
+      t.text :json
+      t.text :text
       t.integer :query_id
     
       t.timestamps

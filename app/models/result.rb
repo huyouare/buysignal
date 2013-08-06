@@ -1,5 +1,5 @@
 class Result < ActiveRecord::Base
-  attr_accessible :json 
+  attr_accessible :json, :text
   validates :json, presence: true
 
   belongs_to :query

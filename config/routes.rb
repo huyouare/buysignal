@@ -1,7 +1,9 @@
 Buysignal::Application.routes.draw do
-  resources :queries
-  
   devise_for :users
+
+  resources :queries do
+    resources :results
+  end
 
   # Pages
   get "about" => "pages#about"
@@ -14,6 +16,8 @@ Buysignal::Application.routes.draw do
   get "dashboard" => "queries#index"
 
   match 'queries/:id/datasift_request' => 'queries#datasift_request', :as => 'datasift_request'
+
+  match 'queries/:id/twitter_request' => 'queries#twitter_request', :as => 'twitter_request'
 
   root :to => "pages#index"
 

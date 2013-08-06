@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Json:</b>
+  <%= @result.json %>
+</p>
+
+<p>
+  <b>Text:</b>
+  <%= @result.text %>
+</p>
+
+
+<%= link_to 'Edit', edit_query_result_path(@result) %> |
+<%= link_to 'Back', query_results_path %>

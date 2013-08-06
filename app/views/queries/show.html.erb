@@ -1,8 +1,8 @@
 <div class="row">
-    <div class="span6 offset3">
+    <div class="span8 offset2">
         <div class="well">
             <p>
-            	Keyword: <%= @query.keyword %>
+            	Keyword(s): <%= @query.keyword %>
             	<br />
             	<% unless @query.description.empty? %>
 	              Description: <%= @query.description %>
@@ -10,9 +10,27 @@
 	            <%  end %> 
               Belongs To: <%= @query.user.name %>
             </p>
+            <table>
+              <thead>
+                <tr>
+                  <th>Text</th>
+                  <th>json</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @query.results.each_with_index do |result, index| %>
+                <tr>
+                  <td><%= result.text %></td>
+                  <td><%= result.json %></td>
+                </tr>
+                <% end %>
+              </tbody>
+
+            </table>
 
             <% if current_user == @query.user %>
-            	<%= link_to 'Send Query to DataSift', controller: "queries", action: "datasift_request" %> | 
+<!--             	<%= link_to 'Send Query to DataSift', controller: "queries", action: "datasift_request" %> --> 
+              <%= link_to 'Send Query to Twitter', controller: "queries", action: "twitter_request" %> | 
 	            <%= link_to 'Edit', edit_query_path(@query) %> | 
 	          <% end %>
 	            <%= link_to 'Back', queries_path %>

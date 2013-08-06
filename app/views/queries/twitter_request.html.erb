@@ -6,11 +6,10 @@
             Keyword: <%= @query.keyword %>
           </p>
           <p>
-            DataSift Query: <%= @query_text %>
-          </p>
-          <p>
             <div>Tweets:</div>
-              
+            <% @statuses.each_with_index do |status, index| %>
+              <div><%= index %>. <%= status %></div>
+            <% end %>
             <%= link_to 'Back', queries_path %>
         </div>
     </div>

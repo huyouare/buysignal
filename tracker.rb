@@ -1,5 +1,8 @@
 require 'tweetstream'
 
+root = File.expand_path(File.join(File.dirname(__FILE__), '.'))
+require File.join(root, "config", "environment")
+
 TweetStream.configure do |config|
   config.consumer_key       = 'JAIrNZ1nzY4b8v5StuW9Mw'
   config.consumer_secret    = '2BzB6CcPRGVFIjWdLcvjJx5zdTLbEwpHxu5S5h0M'
@@ -8,17 +11,12 @@ TweetStream.configure do |config|
   config.auth_method        = :oauth
 end
 
+daemon = TweetStream::Daemon.new('tracker', :log_output => true)
+daemon.on_inited do
+  ActiveRecord::Base.connection.reconnect!
+  ActiveRecord::Base.logger = Logger.new(File.open('log/stream.log', 'w+'))
+end
 
-statuses = []
-puts "here we go"
-# This will pull a sample of all tweets based on
-# your Twitter account's Streaming API role.
-TweetStream::Client.new.track('buy', 'buying') do |status, client|
-  puts "now"
+daemon.track('buy') do |status|
   puts "#{status.text}"
-  puts status.class
-  puts status.attrs
-  statuses << status
-  puts statuses.size
-  client.stop if statuses.size >= 10
 end

@@ -25,6 +25,8 @@ gem 'simple_form'
 
 gem 'datasift'
 gem 'tweetstream'
+gem 'daemons'
+gem 'thin'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
