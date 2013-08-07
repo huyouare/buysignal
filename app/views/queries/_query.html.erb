@@ -1,11 +1,41 @@
-<tr>
-  <td><%= query.keyword %></td>
-	<td><%= query.description %></td>
+<table class="table table-striped">
+  <thead>  
+    <tr>
+      <th>Keyword</th>
+      <th>Description</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= query.keyword %></td>
+    	<td><%= query.description %></td>
 
-  <% if current_user ==	query.user %>
-		<td><%= link_to 'Send Query to Twitter', twitter_request_path(query) %></td>
-  	<td><%= link_to 'Show', query %></td>
-	  <td><%= link_to 'Edit', edit_query_path(query) %></td>
-	  <td><%= link_to 'Destroy', query, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  <% end %>
-</tr>
+      <% if current_user ==	query.user %>
+    		<td><%= link_to 'Send Query to Twitter', twitter_request_path(query) %></td>
+      	<td><%= link_to 'Show', query %></td>
+    	  <td><%= link_to 'Edit', edit_query_path(query) %></td>
+    	  <td><%= link_to 'Destroy', query, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
+    </tr>
+  </tbody>
+</table>
+<table class="table table-striped">
+  <thead>  
+    <tr>
+      <th>Tweet</th>
+      <th>Location</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% query.results.each do |result| %>
+      <tr><td><%= result.text %></td></tr>
+    <% end %>
+  </tbody>
+</table>
+

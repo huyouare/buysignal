@@ -17,12 +17,14 @@ class QueriesController < ApplicationController
   # GET /queries/1
   # GET /queries/1.json
   def show
-    @query = current_user.queries.find(params[:id])
+    # @query = current_user.queries.find(params[:id])
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @query }
-    end
+    @queries = current_user.queries.all
+    redirect_to action: "index"
+    # respond_to do |format|
+    #   format.html # show.html.erb
+    #   format.json { render json: @query }
+    # end
   end
 
   # GET /queries/new
@@ -90,67 +92,67 @@ class QueriesController < ApplicationController
 
     keyword = @query.keyword
 
-    @query_text = "twitter.text contains \"#{keyword}\""
+    # @query_text = "twitter.text contains \"#{keyword}\""
 
-    user = DataSift::User.new("blahblah", "3441448ba7cb3426fe0f996cb88ba8e2")
-    definition = user.createDefinition(@query_text)
-    consumer = definition.getConsumer(DataSift::StreamConsumer::TYPE_HTTP)
-    @interactionArr = Array.new
-    count = 1
-    consumer.consume(true) do |interaction|
-      if interaction
-        @interactionArr.push(interaction['twitter']['id'])
-        count -= 1
-        if count <= 0 
-          consumer.stop()
-        end 
-      end
-    end
+    # user = DataSift::User.new("blahblah", "3441448ba7cb3426fe0f996cb88ba8e2")
+    # definition = user.createDefinition(@query_text)
+    # consumer = definition.getConsumer(DataSift::StreamConsumer::TYPE_HTTP)
+    # @interactionArr = Array.new
+    # count = 1
+    # consumer.consume(true) do |interaction|
+    #   if interaction
+    #     @interactionArr.push(interaction['twitter']['id'])
+    #     count -= 1
+    #     if count <= 0 
+    #       consumer.stop()
+    #     end 
+    #   end
+    # end
 
-    require 'net/http'
+    # require 'net/http'
 
-    @tweetArr = Array.new
+    # @tweetArr = Array.new
 
-    @interactionArr.each do |id|
-      urlString = "https://api.twitter.com/1/statuses/oembed.json?id=#{id}&align=center"
-      uri = URI(urlString)
-      res = Net::HTTP.get_response(uri)
-      if response.code == "200"
-        result = JSON.parse(res.body)
-        @tweetArr.push(result['html'])
-      end
-    end
+    # @interactionArr.each do |id|
+    #   urlString = "https://api.twitter.com/1/statuses/oembed.json?id=#{id}&align=center"
+    #   uri = URI(urlString)
+    #   res = Net::HTTP.get_response(uri)
+    #   if response.code == "200"
+    #     result = JSON.parse(res.body)
+    #     @tweetArr.push(result['html'])
+    #   end
+    # end
   end
 
   def twitter_request
     @query = current_user.queries.find(params[:id])
 
-    keyword = @query.keyword
+    # keyword = @query.keyword
 
-    require 'tweetstream'
+    # require 'tweetstream'
 
-    TweetStream.configure do |config|
-      config.consumer_key       = 'JAIrNZ1nzY4b8v5StuW9Mw'
-      config.consumer_secret    = '2BzB6CcPRGVFIjWdLcvjJx5zdTLbEwpHxu5S5h0M'
-      config.oauth_token        = '1491888716-SFSFcONtaTw0OHkuGQVlLNGcacvxfq6OhU4lwxd'
-      config.oauth_token_secret = '1dCP0Kka3rvkx5ZuH3pXvZLQfNUzUhEU5nD3JsVBjw'
-      config.auth_method        = :oauth
-    end
+    # TweetStream.configure do |config|
+    #   config.consumer_key       = 'JAIrNZ1nzY4b8v5StuW9Mw'
+    #   config.consumer_secret    = '2BzB6CcPRGVFIjWdLcvjJx5zdTLbEwpHxu5S5h0M'
+    #   config.oauth_token        = '1491888716-SFSFcONtaTw0OHkuGQVlLNGcacvxfq6OhU4lwxd'
+    #   config.oauth_token_secret = '1dCP0Kka3rvkx5ZuH3pXvZLQfNUzUhEU5nD3JsVBjw'
+    #   config.auth_method        = :oauth
+    # end
 
-    @statuses = []
+    # @statuses = []
 
-    puts "Twitter Request Active"
+    # puts "Twitter Request Active"
 
-    # This will pull a sample of all tweets based on
-    # your Twitter account's Streaming API role.
-    TweetStream::Client.new.track('buy', 'buying') do |status, client|
-      result = @query.results.new(:json => status.attrs, :text => status.text)
-      result.save
-      @statuses << status.text
-      puts status.text
-      client.stop if @statuses.size >= 10
-    end
+    # # This will pull a sample of all tweets based on
+    # # your Twitter account's Streaming API role.
+    # TweetStream::Client.new.track('buy', 'buying') do |status, client|
+    #   result = @query.results.new(:json => status.attrs, :text => status.text)
+    #   result.save
+    #   @statuses << status.text
+    #   puts status.text
+    #   client.stop if @statuses.size >= 10
+    # end
 
-    puts "Twitter Request Done"
+    # puts "Twitter Request Done"
   end
 end

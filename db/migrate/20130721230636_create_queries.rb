@@ -1,8 +1,12 @@
 class CreateQueries < ActiveRecord::Migration
   def change
+  	drop_table :queries
     create_table :queries do |t|
-      t.string :keyword
-      t.string :description
+    	t.integer :zip_code
+    	t.integer :radius
+    	t.integer :max_spending
+    	t.boolean :notifications
+    	
       t.timestamps
     end
   end

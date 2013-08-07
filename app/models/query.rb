@@ -1,5 +1,5 @@
 class Query < ActiveRecord::Base
-  attr_accessible :description, :keyword
+  attr_accessible :keyword
 
   validates :keyword, presence: true
 
@@ -7,4 +7,5 @@ class Query < ActiveRecord::Base
   validates :user_id, presence: true
 
   has_many :results, :dependent => :destroy
+  has_many :filters, :dependent => :destroy
 end

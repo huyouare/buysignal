@@ -14,4 +14,5 @@
  *= require styles
  *= require pages
  *= require social-buttons.css
+ *= require queries
  */

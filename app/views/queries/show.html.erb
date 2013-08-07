@@ -1,39 +1,43 @@
 <div class="row">
-    <div class="span8 offset2">
-        <div class="well">
-            <p>
-            	Keyword(s): <%= @query.keyword %>
-            	<br />
-            	<% unless @query.description.empty? %>
-	              Description: <%= @query.description %>
-  	            <br />
-	            <%  end %> 
-              Belongs To: <%= @query.user.name %>
-            </p>
-            <table>
-              <thead>
-                <tr>
-                  <th>Text</th>
-                  <th>json</th>
-                </tr>
-              </thead>
-              <tbody>
-                <% @query.results.each_with_index do |result, index| %>
-                <tr>
-                  <td><%= result.text %></td>
-                  <td><%= result.json %></td>
-                </tr>
-                <% end %>
-              </tbody>
+  <div class="span3">
+    <%= render 'queries/sidebar' %>
+  </div>
+  <div class="span9">
+    <h1>Listing <%= current_user.name %>'s queries</h1>
 
-            </table>
-
-            <% if current_user == @query.user %>
-<!--             	<%= link_to 'Send Query to DataSift', controller: "queries", action: "datasift_request" %> --> 
-              <%= link_to 'Send Query to Twitter', controller: "queries", action: "twitter_request" %> | 
-	            <%= link_to 'Edit', edit_query_path(@query) %> | 
-	          <% end %>
-	            <%= link_to 'Back', queries_path %>
+    <div class="tabbable"> <!-- Only required for left/right tabs -->
+      <ul class="nav nav-tabs">
+        <% queries = current_user.queries %>
+        <% queries.each_with_index do |query, index| %>
+          <% if index==0 %>
+            <li <% if query==@query %>class="active"<% end %> ><a href="#tab<%= index+1 %>" data-toggle="tab">Channel <%= index+1 %></a></li>
+          <% else %>
+            <li <% if query==@query %>class="active"<% end %> ><a href="#tab<%= index+1 %>" data-toggle="tab">Channel <%= index+1 %></a></li>
+          <% end %>
+        <% end %>
+        <li><a href="#tab<%= queries.size+1 %>" data-toggle="tab">+ Add Channel</a></li>
+<!--         <li><%= link_to '+ Add Channel', new_query_path, class: ""%></li> -->
+      </ul>
+      <div class="tab-content">
+        <% queries.each_with_index do |query, index| %>
+          <% if index==0 %>
+            <div class="tab-pane <% if query==@query %>active<% end %>" id="tab<%= index+1 %>">
+              <%= render query %>
+            </div>
+          <% else %>
+            <div class="tab-pane <% if query==@query %>active<% end %>" id="tab<%= index+1 %>">
+              <%= render query %>
+            </div>
+          <% end %>
+        <% end %>
+          <div class="tab-pane" id="tab<%= queries.size+1 %>">
+          <%= simple_form_for queries.first, :html => { :class => 'form-horizontal' } do |f| %>
+            <%= f.input :keyword %>
+            <%= f.input :description %>
+            <%= f.button :submit %>
+          <% end %>
         </div>
+      </div>
     </div>
+  </div>
 </div>

@@ -11,7 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130806224344) do
+ActiveRecord::Schema.define(:version => 20130807230645) do
+
+  create_table "filters", :force => true do |t|
+    t.string   "keyword"
+    t.integer  "cpl"
+    t.integer  "query_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "filters", ["query_id"], :name => "index_filters_on_query_id"
 
   create_table "queries", :force => true do |t|
     t.string   "keyword"
@@ -22,6 +32,13 @@ ActiveRecord::Schema.define(:version => 20130806224344) do
   end
 
   add_index "queries", ["user_id"], :name => "index_queries_on_user_id"
+
+  create_table "raw_tweets", :force => true do |t|
+    t.text     "json"
+    t.string   "text"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "results", :force => true do |t|
     t.text     "json"
