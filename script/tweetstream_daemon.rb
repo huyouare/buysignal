@@ -9,11 +9,21 @@ TweetStream.configure do |config|
 end
 
 
+ENV["RAILS_ENV"] ||= "production"
+
+root = File.expand_path(File.join(File.dirname(__FILE__), '..'))
+require File.join(root, "config", "environment")
+
+daemon = TweetStream::Daemon.new('tweetstream', :log_output => true)
+daemon.on_inited do
+  ActiveRecord::Base.connection.reconnect!
+end
+
 count = 0
-puts "Stream Begin"
+puts "Deamon Initializing..."
 # This will pull a sample of all tweets based on
 # your Twitter account's Streaming API role.
-TweetStream::Client.new.track('buy', 'buying') do |status, client|
+daemon.track('buy', 'buying') do |status|
   puts "#{status.text}"
   tweet = RawTweet.new
   tweet.text = status.text
@@ -21,7 +31,6 @@ TweetStream::Client.new.track('buy', 'buying') do |status, client|
   tweet.save
   count = count + 1
   puts count
-  client.stop if count >= 25
 end
 
-puts "Stream End"
+puts "Daemon Finished"

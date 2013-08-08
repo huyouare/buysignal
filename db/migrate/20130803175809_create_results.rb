@@ -1,6 +1,5 @@
 class CreateResults < ActiveRecord::Migration
   def change
-    drop_table :results
     create_table :results do |t|
       t.text :json
       t.string :text

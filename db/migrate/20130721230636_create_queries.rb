@@ -1,6 +1,5 @@
 class CreateQueries < ActiveRecord::Migration
   def change
-  	drop_table :queries
     create_table :queries do |t|
     	t.integer :zip_code
     	t.integer :radius
