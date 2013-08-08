@@ -24,10 +24,10 @@ gem 'devise'
 gem 'simple_form'
 gem 'cancan'
 
+gem 'tweetstream'
 gem 'twitter'
 
 gem 'datasift'
-gem 'tweetstream'
 gem 'daemons'
 gem 'thin'
 

@@ -9,13 +9,22 @@
       <ul class="nav nav-tabs">
         <% queries = current_user.queries %>
         <% queries.each_with_index do |query, index| %>
-          <li><%= link_to "Channel #{index+1}", query  %></li>
+        	<% unless query.new_record? %>
+          	<li><%= link_to "Channel #{index+1}", query  %></li>
+          <% end %>
         <% end %>
         <li class="active"><%= link_to "+ Add Channel", new_query_path %></li>
       </ul>
       <div class="tab-content">
-        <%= simple_form_for queries.first, :html => { :class => 'form-horizontal' } do |f| %>
+      	<h3>New Channel</h3>
+        <%= simple_form_for @query, :html => { :class => 'form-horizontal' } do |f| %>
+        	<%= f.input :name %>
+        	<%= f.input :zip_code, as: :string %>
+        	<%= f.input :radius, collection: (5..100).step(5), prompt: "Miles" %>
+        	<%= f.input :max_spending, as: :string %>
+        	<%= f.input :notifications, label:'Send email notifications about this Channel' %>
           <%= f.button :submit %>
+          <%= link_to new_query_filter_path "Add Filter" %>
         <% end %>
       </div>
     </div>

@@ -1,5 +1,5 @@
 class Query < ActiveRecord::Base
-  attr_accessible :name
+  attr_accessible :name, :zip_code, :radius, :max_spending, :notifications
 
   validates :name, presence: true
 

@@ -1,9 +1,29 @@
-<h1>Editing query</h1>
+<div class="row">
+  <div class="span3">
+    <%= render 'queries/sidebar' %>
+  </div>
+  <div class="span9">
+    <h1>Listing <%= current_user.name %>'s queries</h1>
 
-<div id="jcsdl-edit"></div>
-
-<%= render 'form' %>
-
-<td><%= link_to 'Destroy', @query, method: :delete, data: { confirm: 'Are you sure?' } %></td><br />
-<%= link_to 'Show', @query %> |
-<%= link_to 'Back', queries_path %>
+    <div class="tabbable"> <!-- Only required for left/right tabs -->
+      <ul class="nav nav-tabs">
+        <% queries = current_user.queries %>
+        <% queries.each_with_index do |query, index| %>
+          <li <% if query==@query %>class="active"<% end %> ><%= link_to "Channel #{index+1}", query  %></li>
+        <% end %>
+        <li><%= link_to "+ Add Channel", new_query_path %></li>
+      </ul>
+      <div class="tab-content">
+      	<h3>Editing Channel</h3>
+				<%= simple_form_for @query, :html => { :class => 'form-horizontal' } do |f| %>
+					<%= f.input :name %>
+					<%= f.input :zip_code, as: :string %>
+					<%= f.input :radius, collection: (5..100).step(5), prompt: "Miles" %>
+					<%= f.input :max_spending, as: :string %>
+					<%= f.input :notifications, label:'Send email notifications about this Channel' %>
+				  <%= f.button :submit %>
+				<% end %>
+      </div>
+    </div>
+  </div>
+</div>

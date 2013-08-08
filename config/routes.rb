@@ -3,6 +3,7 @@ Buysignal::Application.routes.draw do
 
   resources :queries do
     resources :results
+    resources :filter
   end
 
   # Pages

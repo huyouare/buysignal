@@ -1,14 +1,23 @@
+<div class="row">
+  <dl class="dl-horizontal span4">
+    <dt>Name</dt><dd><%= query.name %></dd>
+    <% if current_user == query.user %>
+      <dt>Zip Code</dt><dd><%= query.zip_code %></dd>
+      <dt>Radius</dt><dd><%= query.radius %></dd>
+      <dt>Daily Budget</dt><dd><%= query.max_spending %></dd>
+      <dt>Email Notifications</dt><dd><%= if query.notifications then "Yes" else "No" end %></dd>
+      <dt><%= link_to 'Edit', edit_query_path(query), class: "btn" %></dt>
+    <% end %>
+  </dl>
+  <dl class="dl-horizontal span4">
+    <% if current_user == query.user %>
+      <% query.results.each_with_index do |result, index| %>
+        <dt>Filter <%= index %></dt><dd>filter.keyword<dd>
+      <% end %>
+    <% end %>
+  </dl>
+</div>
 
-<dl class="dl-horizontal">
-  <dt>Name:</dt>
-  <dd><%= query.name %></dd>
-  <% if current_user == query.user %>
-    <dt>Links:</dt>
-    <dd><%= link_to 'Show', query %>
-    <%= link_to 'Edit', edit_query_path(query) %>
-    <%= link_to 'Destroy', query, method: :delete, data: { confirm: 'Are you sure?' } %></dd>
-  <% end %>
-</dl>
 <div class="results-wrapper">
   <h3>Tweets</h3>
   <% query.results.each_with_index do |result, index| %>

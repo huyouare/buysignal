@@ -8,9 +8,12 @@ class QueriesController < ApplicationController
     # @queries = Query.all
     # @queries = current_user.queries.all
     # @new_query = current_user.queries.new
-
-    @query = current_user.queries.first
-    redirect_to action: "show", id:@query.id
+    if current_user.queries.empty?
+      redirect_to action: "new"
+    else
+      @query = current_user.queries.first
+      redirect_to action: "show", id:@query.id
+    end
 
     # respond_to do |format|
     #   format.html # index.html.erb

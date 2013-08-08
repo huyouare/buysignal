@@ -7,6 +7,9 @@ class Ability
     user ||= User.new # guest user (not logged in)
     if user.is_worker?
       can :verify_result, :all
+    elsif user.is_admin?
+      can :verify_result, :all
+      can :modify_accounts, :all
     end
     #
     # The first argument to `can` is the action you are giving the user 
