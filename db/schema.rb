@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130807230645) do
+ActiveRecord::Schema.define(:version => 20130808023042) do
 
   create_table "filters", :force => true do |t|
     t.string   "keyword"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(:version => 20130807230645) do
   add_index "filters", ["query_id"], :name => "index_filters_on_query_id"
 
   create_table "queries", :force => true do |t|
+    t.string   "name"
     t.integer  "zip_code"
     t.integer  "radius"
     t.integer  "max_spending"
@@ -49,6 +50,8 @@ ActiveRecord::Schema.define(:version => 20130807230645) do
     t.boolean  "is_buysignal"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+    t.string   "id_str"
+    t.text     "html"
   end
 
   add_index "results", ["query_id"], :name => "index_results_on_query_id"

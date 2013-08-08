@@ -1,7 +1,7 @@
 class Query < ActiveRecord::Base
-  attr_accessible :keyword
+  attr_accessible :name
 
-  validates :keyword, presence: true
+  validates :name, presence: true
 
   belongs_to :user
   validates :user_id, presence: true

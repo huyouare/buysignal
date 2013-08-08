@@ -6,25 +6,24 @@ class QueriesController < ApplicationController
   # GET /queries.json
   def index
     # @queries = Query.all
-    @queries = current_user.queries.all
+    # @queries = current_user.queries.all
+    # @new_query = current_user.queries.new
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @queries }
-    end
+    @query = current_user.queries.first
+    redirect_to action: "show", id:@query.id
+
+    # respond_to do |format|
+    #   format.html # index.html.erb
+    #   format.json { render json: @queries }
+    # end
   end
 
   # GET /queries/1
   # GET /queries/1.json
   def show
-    # @query = current_user.queries.find(params[:id])
+    @query = current_user.queries.find(params[:id])
+    # @queries = current_user.queries.all
 
-    @queries = current_user.queries.all
-    redirect_to action: "index"
-    # respond_to do |format|
-    #   format.html # show.html.erb
-    #   format.json { render json: @query }
-    # end
   end
 
   # GET /queries/new

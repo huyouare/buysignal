@@ -9,34 +9,18 @@
       <ul class="nav nav-tabs">
         <% queries = current_user.queries %>
         <% queries.each_with_index do |query, index| %>
-          <% if index==0 %>
-            <li <% if query==@query %>class="active"<% end %> ><a href="#tab<%= index+1 %>" data-toggle="tab">Channel <%= index+1 %></a></li>
-          <% else %>
-            <li <% if query==@query %>class="active"<% end %> ><a href="#tab<%= index+1 %>" data-toggle="tab">Channel <%= index+1 %></a></li>
-          <% end %>
+          <li <% if query==@query %>class="active"<% end %> ><%= link_to "Channel #{index+1}", query  %></li>
         <% end %>
-        <li><a href="#tab<%= queries.size+1 %>" data-toggle="tab">+ Add Channel</a></li>
-<!--         <li><%= link_to '+ Add Channel', new_query_path, class: ""%></li> -->
+        <li><%= link_to "+ Add Channel", new_query_path %></li>
       </ul>
       <div class="tab-content">
         <% queries.each_with_index do |query, index| %>
-          <% if index==0 %>
-            <div class="tab-pane <% if query==@query %>active<% end %>" id="tab<%= index+1 %>">
-              <%= render query %>
-            </div>
-          <% else %>
-            <div class="tab-pane <% if query==@query %>active<% end %>" id="tab<%= index+1 %>">
+          <% if query==@query %>
+            <div class="tab-pane active" id="tab<%= index+1 %>">
               <%= render query %>
             </div>
           <% end %>
         <% end %>
-          <div class="tab-pane" id="tab<%= queries.size+1 %>">
-          <%= simple_form_for queries.first, :html => { :class => 'form-horizontal' } do |f| %>
-            <%= f.input :keyword %>
-            <%= f.input :description %>
-            <%= f.button :submit %>
-          <% end %>
-        </div>
       </div>
     </div>
   </div>

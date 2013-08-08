@@ -1,5 +1,23 @@
-<h1>New query</h1>
+<div class="row">
+  <div class="span3">
+    <%= render 'queries/sidebar' %>
+  </div>
+  <div class="span9">
+    <h1>Listing <%= current_user.name %>'s queries</h1>
 
-<%= render 'form' %>
-
-<%= link_to 'Back', queries_path %>
+    <div class="tabbable"> <!-- Only required for left/right tabs -->
+      <ul class="nav nav-tabs">
+        <% queries = current_user.queries %>
+        <% queries.each_with_index do |query, index| %>
+          <li><%= link_to "Channel #{index+1}", query  %></li>
+        <% end %>
+        <li class="active"><%= link_to "+ Add Channel", new_query_path %></li>
+      </ul>
+      <div class="tab-content">
+        <%= simple_form_for queries.first, :html => { :class => 'form-horizontal' } do |f| %>
+          <%= f.button :submit %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

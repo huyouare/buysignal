@@ -15,7 +15,6 @@
           <% end %>
         <% end %>
         <li><a href="#tab<%= @queries.size+1 %>" data-toggle="tab">+ Add Channel</a></li>
-<!--         <li><%= link_to '+ Add Channel', new_query_path, class: ""%></li> -->
       </ul>
       <div class="tab-content">
         <% @queries.each_with_index do |query, index| %>
@@ -30,29 +29,14 @@
           <% end %>
         <% end %>
           <div class="tab-pane" id="tab<%= @queries.size+1 %>">
-          <%= simple_form_for @queries.first, :html => { :class => 'form-horizontal' } do |f| %>
-            <%= f.input :keyword %>
-            <%= f.input :description %>
-            <%= f.button :submit %>
+          <%= simple_form_for @new_query, :html => { :class => 'form-horizontal' } do |f| %>
+            <%= f.input :name %>
+            <div class="form-actions">
+              <%= f.button :submit, class: "btn btn-primary" %>
+            </div>
           <% end %>
         </div>
       </div>
     </div>
-
-<!-- <table class="table table-striped">
-  <thead>  
-    <tr>
-      <th>Keyword</th>
-      <th>Description</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  
-  <tbody>
-    <%= render @queries %>
-  </tbody>
-</table> -->
   </div>
 </div>

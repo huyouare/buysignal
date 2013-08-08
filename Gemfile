@@ -24,6 +24,8 @@ gem 'devise'
 gem 'simple_form'
 gem 'cancan'
 
+gem 'twitter'
+
 gem 'datasift'
 gem 'tweetstream'
 gem 'daemons'
@@ -45,8 +47,7 @@ gem 'thin'
 # gem 'debugger'
 
 group :development, :test do
-  # gem 'sqlite3'
-  gem 'pg'
+  gem 'sqlite3'
 end
 
 group :production do

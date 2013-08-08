@@ -16,24 +16,23 @@ require File.join(root, "config", "environment")
 
 daemon = TweetStream::Daemon.new('tweetstream', :log_output => true)
 daemon.on_inited do
-  ActiveRecord::Base.connection.disconnect!
-  ActiveRecord::Base.connection.reconnect!
+  ActiveRecord::Base.connection.connect!
 end
 
 count = 0
 puts "Deamon Initializing..."
 # This will pull a sample of all tweets based on
 # your Twitter account's Streaming API role.
-daemon.on_error do |message|
-  puts message
-end.track('buy', 'buying') do |status|
+daemon.track('buy', 'buying') do |status|
   puts "#{status.text}"
-  tweet = RawTweet.new
+  tweet = User.first.queries.first.results.new
   tweet.text = status.text
   tweet.json = status.attrs
+  tweet.query_id = 1
+  tweet.is_buysignal = true
   tweet.save
   count = count + 1
   puts count
 end
-
+ActiveRecord::Base.connection.disconnect!
 puts "Daemon Finished"
