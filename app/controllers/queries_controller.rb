@@ -26,13 +26,21 @@ class QueriesController < ApplicationController
   def show
     @query = current_user.queries.find(params[:id])
     # @queries = current_user.queries.all
-
+    respond_to do |format|
+      format.html
+      format.json { render json: @query }
+    end
   end
 
   # GET /queries/new
   # GET /queries/new.json
   def new
     @query = current_user.queries.new
+
+    @new_filters = []
+    (1..5).each do |num|
+      @new_filters << @query.filters.new
+    end
 
     respond_to do |format|
       format.html # new.html.erb
@@ -43,6 +51,17 @@ class QueriesController < ApplicationController
   # GET /queries/1/edit
   def edit
     @query = current_user.queries.find(params[:id])
+
+    @new_filters = []
+    
+    (1..5).each do |num|
+      @new_filters << @query.filters.new
+    end
+
+    respond_to do |format|
+      format.html # new.html.erb
+      format.json { render json: @query }
+    end
   end
 
   # POST /queries

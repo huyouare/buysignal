@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130808023042) do
+ActiveRecord::Schema.define(:version => 20130808221156) do
 
   create_table "filters", :force => true do |t|
     t.string   "keyword"
@@ -72,6 +72,8 @@ ActiveRecord::Schema.define(:version => 20130808023042) do
     t.string   "name"
     t.boolean  "is_worker"
     t.boolean  "is_admin"
+    t.string   "phone"
+    t.string   "mailing_address"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
