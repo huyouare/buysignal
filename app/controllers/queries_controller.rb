@@ -51,12 +51,7 @@ class QueriesController < ApplicationController
   # GET /queries/1/edit
   def edit
     @query = current_user.queries.find(params[:id])
-
-    @new_filters = []
-    
-    (1..5).each do |num|
-      @new_filters << @query.filters.new
-    end
+    @filters = @query.filters
 
     respond_to do |format|
       format.html # new.html.erb

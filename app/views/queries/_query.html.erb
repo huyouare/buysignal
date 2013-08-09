@@ -11,10 +11,15 @@
   </dl>
   <dl class="dl-horizontal span4">
     <% if current_user == query.user %>
-      <% query.results.each_with_index do |result, index| %>
-        <dt>Filter <%= index %></dt><dd>filter.keyword<dd>
+      <% if query.filters.empty? %>
+        <dt>Currently no filters</dt>
+      <% else %>
+        <% query.filters.each_with_index do |filter, index| %>
+          <dt>Filter <%= index+1 %></dt><dd><%= filter.keyword %>, CPL: <%= filter.cpl %><dd>
+        <% end %>
       <% end %>
     <% end %>
+    <dt><%= link_to 'Edit', edit_query_path(query), class: "btn" %></dt>
   </dl>
 </div>
 

@@ -1,9 +1,9 @@
 <div class="row">
-  <div class="span3">
+  <div class="span2">
     <%= render 'queries/sidebar' %>
   </div>
-  <div class="span9">
-    <h1>Listing <%= current_user.name %>'s queries</h1>
+  <div class="span10">
+    <h1>Listing <%= current_user.name %>'s Channels</h1>
 
     <div class="tabbable"> <!-- Only required for left/right tabs -->
       <ul class="nav nav-tabs">
@@ -13,34 +13,41 @@
         <% end %>
         <li><%= link_to "+ Add Channel", new_query_path %></li>
       </ul>
-      <div class="tab-content">
+      <div class="tab-content container-fluid">
         <h3>Editing Channel</h3>
-        <%= simple_form_for @query, :html => { :class => 'form-horizontal' } do |f| %>
-          <%= f.input :name %>
-          <%= f.input :zip_code, as: :string %>
-          <%= f.input :radius, :wrapper => :append do %>
-            <%= f.input_field :radius, collection: (5..100).step(5), prompt: "Miles" %>  
-            <%= content_tag :span, "Miles", :class => "add-on" %>
-          <% end %>
-          <%= f.input :max_spending, :wrapper => :prepend do %>
-            <%= content_tag :span, "$", :class => "add-on" %>
-            <%= f.input_field :max_spending, as: :string %>
-          <% end %>
-          <%= f.input :notifications, label:'Send email notifications about this Channel' %>
-          <div class="form-actions">
-            <%= f.submit "Update Channel", class: "btn btn-primary"%>
-          </div>
-        <% end %>
-        <button id="#newFilter" class="btn btn-primary">+ Add Filter</button>
-        <% @new_filters.each do |filter| %>
-          <%= simple_form_for [@query, filter], :html => { :class => 'form-horizontal hide' } do |f| %>
-            <%= f.input :keyword %>
-            <%= f.input :cpl %>
+          <%= simple_form_for @query, :html => { :class => 'form-horizontal' } do |f| %>
+            <%= f.input :name %>
+            <%= f.input :zip_code, as: :string %>
+            <%= f.input :radius, :wrapper => :append do %>
+              <%= f.input_field :radius, collection: (5..100).step(5), prompt: "Miles" %>  
+              <%= content_tag :span, "Miles", :class => "add-on" %>
+            <% end %>
+            <%= f.input :max_spending, :wrapper => :prepend do %>
+              <%= content_tag :span, "$", :class => "add-on" %>
+              <%= f.input_field :max_spending, as: :string %>
+            <% end %>
+            <%= f.input :notifications, label:'Send email notifications about this Channel' %>
+
+            <% if @query.filters.empty? %>
+              <div class="control-group"><label class="control-label">Currently No Filters</label></div>
+            <% end %>
+
             <div class="form-actions">
-              <%= f.submit "Create Filter", class: "btn btn-primary"%>
+              <%= f.submit "Update Channel", class: "btn btn-primary"%>
             </div>
           <% end %>
-        <% end %>
+          <% @filters.each do |filter|  %>
+            <%= simple_form_for [@query, filter], :html => { :class => 'form-horizontal' }  do |f| %>
+              <%= f.input :keyword %>
+              <%= f.input :cpl %>
+              <div class="form-actions">
+                <%= f.submit "Update Filter" %>
+                <%= button_to "Delete", query_filter_path(filter), class: "btn btn-danger", method: :delete, confirm: 'Are you sure?' %>
+              </div>
+            <% end %>
+          <% end %>
+            <%= link_to "+ Add Filter", new_query_filter_path(query_id: @query.id), class: "btn btn-primary" %>
+        </div>
       </div>
 
     </div>

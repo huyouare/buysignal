@@ -6,7 +6,7 @@
 
     <%= f.input :name, label: 'Company Name' %>
     <%= f.input :email %>
-    <%= f.input :mailing_address %>
+    <%= f.input :mailing_address, as: :text, length: 3 %>
     <%= f.input :phone %>
     <%= f.input :password, label: "New Password", autocomplete: "off" %>
     <%= f.input :password_confirmation, label: "New Password Confirmation", autocomplete: "off" %>

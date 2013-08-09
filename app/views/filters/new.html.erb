@@ -9,19 +9,21 @@
       <ul class="nav nav-tabs">
         <% queries = current_user.queries %>
         <% queries.each_with_index do |query, index| %>
-          <li <% if query==@query %>class="active"<% end %> ><%= link_to "Channel #{index+1}", query  %></li>
+          <li <% if query==@query %>class="active"  <% end %> ><%= link_to "Channel #{index+1}", query  %></li>
         <% end %>
         <li><%= link_to "+ Add Channel", new_query_path %></li>
       </ul>
       <div class="tab-content">
-        <% queries.each_with_index do |query, index| %>
-          <% if query==@query %>
-            <div class="tab-pane active" id="tab<%= index+1 %>">
-              <%= render query %>
-            </div>
-          <% end %>
+        <h3>Editing Channel</h3>
+        <%= simple_form_for [@query, @filter], :html => { :class => 'form-horizontal' } do |f| %>
+         <%= f.input :keyword %>
+         <%= f.input :cpl, as: :string, label: "CPL" %>
+        <div class="form-actions">
+          <%= f.submit "Create Filter", class: "btn btn-primary"%>
+        </div>
         <% end %>
       </div>
+
     </div>
   </div>
 </div>
