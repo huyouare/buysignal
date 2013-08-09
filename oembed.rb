@@ -1,4 +1,21 @@
 require 'twitter'
+require 'json'
+
+json_tweets = [] 
+text = File.open('tweets.json').read
+text.each_line do |line|
+	json_tweets << line
+end
+
+id_str = []
+json_tweets.each do |x|
+	tweet = JSON.parse(x)
+	id = tweet['id_str']
+	unless id.nil? or id.empty?
+		id_str << tweet['id_str']
+	end
+end
+
 
 Twitter.configure do |config|
   config.consumer_key       = 'JAIrNZ1nzY4b8v5StuW9Mw'
@@ -7,5 +24,13 @@ Twitter.configure do |config|
   config.oauth_token_secret = '1dCP0Kka3rvkx5ZuH3pXvZLQfNUzUhEU5nD3JsVBjw'
 end
 
-status = Twitter.oembed(25938088801)
-puts status.html
+id_str.each do |id|
+	begin
+		unless id.nil? or id.empty?
+			status = Twitter.oembed(id.to_i)
+			puts status.html
+		end
+
+	rescue
+	end
+end

@@ -114,7 +114,10 @@
       padding: 0 20px;
       margin-top: 100px;
       margin-left: 0px;
-
+      p.lead.spaced {
+        text-align:left;
+        margin: 20px;
+      }
     }
 
     .carousel-caption h1,
@@ -166,6 +169,13 @@
         img {
         min-width: 0;
         position: relative;
+        }
+        i {
+          min-width: 50px;
+        }          
+        i.icon-male {
+            margin-left: 10px;
+            margin-right: 0px;
         }
       }
     }
@@ -381,4 +391,8 @@
       padding-right: 30px;
     }
 
-    
+    .results-wrapper {
+      span {
+        margin-right: 23%;
+      }
+    }

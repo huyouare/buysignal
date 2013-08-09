@@ -12,6 +12,7 @@ Buysignal::Application.routes.draw do
   get "home" => "pages#home"
   get "pricing" => "pages#pricing"
   get "blog" => "pages#blog"
+  get "contact" => "pages#contact"
 
   # get "dashboard" => "Pages#dashboard"
   get "dashboard" => "queries#index"
