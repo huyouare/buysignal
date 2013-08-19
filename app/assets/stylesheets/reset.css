@@ -5,9 +5,10 @@ Import fonts
 /*** load open sans font from Google Fonts
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700);
 ***/
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700);
 
 /* load open sans font from local */
-@import url(../fonts/font.css);
+/*@import url(../fonts/font.css);*/
 
 /* General body settings */
 body { 

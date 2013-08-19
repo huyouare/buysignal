@@ -9,10 +9,19 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require bootstrap.min
- *= require bootstrap-responsive
- *= require styles
- *= require pages
+ *= require bootstrap/css/bootstrap.min
+ *= require bootstrap/css/bootstrap-responsive.min
+ *= require reset
+ *= require style-metro
+ *= require style-metronic
+ *= require fancybox/source/jquery.fancybox.css
+ *= require _font-awesome
+ *= require bxslider/jquery.bxslider.css
+ *= require revolution_slider/css/rs-style.css
+ *= require revolution_slider/rs-plugin/css/settings.css
+ *= require style-responsive
+ *= require themes/blue.css
+
  *= require social-buttons.css
  *= require queries
  */

@@ -12,5 +12,20 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-migrate-min
 //= require bootstrap
-//= require_tree .
+//= require back-to-top
+//= require bxslider/jquery.bxslider
+//= require fancybox/source/jquery.fancybox.pack
+//= require hover-dropdown
+//= require revolution_slider/rs-plugin/js/jquery.themepunch.plugins.min
+//= require revolution_slider/rs-plugin/js/jquery.themepunch.revolution.min
+//= require respond.min
+//= require app
+//= require index
+
+jQuery(document).ready(function() {
+  App.init();    
+  App.initBxSlider();
+  Index.initRevolutionSlider();                    
+});
